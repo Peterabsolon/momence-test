@@ -1,5 +1,7 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import { useQuery } from 'react-query'
+
+import { QUERIES, api } from '../../constants'
 
 const FAKE_DATA = [
   { id: '1', name: 'Foo' },
@@ -11,7 +13,7 @@ export const HomePage: FC<any> = () => {
     data = [],
     error,
     isLoading,
-  } = useQuery('mydata', () => Promise.resolve(FAKE_DATA))
+  } = useQuery(QUERIES.DAILY_RATES, api.getDailyRates)
 
   if (error && typeof error === 'string') {
     return <div>{error}</div>

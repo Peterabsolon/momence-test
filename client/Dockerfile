@@ -9,7 +9,7 @@ COPY . .
 RUN npm run lint & npm run test
 RUN npm run build
 
-# create fresh image
+
 FROM node:16-alpine
 WORKDIR /app
 ENV NODE_ENV=production

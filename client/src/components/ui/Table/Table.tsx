@@ -19,24 +19,22 @@ export interface TableProps<Row> {
   getKey?: (row: Row) => string
 }
 
-export const Table = <Row extends AnyRecord>({ rows, columns, getKey = (row) => row.id, ...rest }: TableProps<Row>) => {
-  return (
-    <TableWrapper {...rest}>
-      <thead>
-        <tr>
-          {columns.map(({ align = 'left', ...col }) => (
-            <TableHeader key={col.label} align={align}>
-              {col.label}
-            </TableHeader>
-          ))}
-        </tr>
-      </thead>
-
-      <tbody>
-        {rows.map((row) => (
-          <TableRow key={getKey(row)} row={row} columns={columns} />
+export const Table = <Row extends AnyRecord>({ rows, columns, getKey = (row) => row.id, ...rest }: TableProps<Row>) => (
+  <TableWrapper {...rest}>
+    <thead>
+      <tr>
+        {columns.map(({ align = 'left', ...col }) => (
+          <TableHeader key={col.label} align={align}>
+            {col.label}
+          </TableHeader>
         ))}
-      </tbody>
-    </TableWrapper>
-  )
-}
+      </tr>
+    </thead>
+
+    <tbody>
+      {rows.map((row) => (
+        <TableRow key={getKey(row)} row={row} columns={columns} />
+      ))}
+    </tbody>
+  </TableWrapper>
+)

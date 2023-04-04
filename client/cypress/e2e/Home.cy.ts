@@ -3,11 +3,16 @@
 import { ROUTES, UNEXPECTED_ERROR } from '../../src/constants'
 import { config } from '../../src/config'
 
+import rates from '../data/rates'
+import { assertTableData } from '../helpers'
+
 const RATES_ENDPOINT = `${config.API_URL}/exchange-rates`
+
+const RATES_TABLE_SELECTOR = '[data-cy="exchange-rates-table"]'
 
 describe('Home', () => {
   it('renders spinner initially', () => {
-    cy.intercept(RATES_ENDPOINT, { fixture: 'rates.json', delay: 100 }).as('getRates')
+    cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
     cy.get('body').should('contain', 'Loading...')
     cy.wait('@getRates')
@@ -20,9 +25,9 @@ describe('Home', () => {
     cy.get('body').should('contain', UNEXPECTED_ERROR)
   })
 
-  it('renders data', () => {
-    cy.intercept(RATES_ENDPOINT, { fixture: 'rates.json' }).as('getRates')
+  it('renders exchange rates on success', () => {
+    cy.intercept(RATES_ENDPOINT, { body: rates }).as('getRates')
     cy.visit(ROUTES.HOME)
-    cy.get('body').should('contain', 'Australia')
+    assertTableData(RATES_TABLE_SELECTOR, rates)
   })
 })

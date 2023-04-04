@@ -18,9 +18,9 @@ export interface TableProps<Row> {
   getKey?: (row: Row) => string
 }
 
-export const Table = <Row extends AnyRecord>({ rows, columns, getKey = (row) => row.id }: TableProps<Row>) => {
+export const Table = <Row extends AnyRecord>({ rows, columns, getKey = (row) => row.id, ...rest }: TableProps<Row>) => {
   return (
-    <table>
+    <table {...rest}>
       <thead>
         <tr>
           {columns.map((col) => (

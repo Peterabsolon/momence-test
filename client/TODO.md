@@ -1,5 +1,6 @@
 # TODO
 
+- React hooks ESLint
 - React error boundary
 - ESLint
 - Prettier

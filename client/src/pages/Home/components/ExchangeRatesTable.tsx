@@ -13,6 +13,7 @@ export interface ExchangeRatesTableProps {
 export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
   return (
     <Table<ExchangeRateWithConverted>
+      data-cy="exchange-rates-table"
       rows={rates}
       getKey={(rate) => rate.country}
       columns={[

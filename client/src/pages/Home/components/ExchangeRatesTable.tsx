@@ -1,15 +1,18 @@
 import { memo } from 'react'
+import numeral from 'numeral'
 
-import { ExchangeRate } from '../../../api'
 import { Table } from '../../../components'
 
+import { ExchangeRateWithConverted } from '../Home.types'
+import { NUMERIC_FORMAT } from '../../../constants'
+
 export interface ExchangeRatesTableProps {
-  rates: ExchangeRate[]
+  rates: ExchangeRateWithConverted[]
 }
 
 export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
   return (
-    <Table<ExchangeRate>
+    <Table<ExchangeRateWithConverted>
       rows={rates}
       getKey={(rate) => rate.country}
       columns={[
@@ -17,8 +20,8 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
         { label: 'Currency', dataKey: 'currency' },
         { label: 'Amount', dataKey: 'amount' },
         { label: 'Code', dataKey: 'code' },
-        { label: 'Rate', dataKey: 'rate' },
-        { label: 'CZK', dataKey: 'converted' },
+        { label: 'Rate', render: (row) => numeral(row.rate).format(NUMERIC_FORMAT) },
+        { label: 'CZK', render: (row) => numeral(row.converted).format(NUMERIC_FORMAT) },
       ]}
     />
   )

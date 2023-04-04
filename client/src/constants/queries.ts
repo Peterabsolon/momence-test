@@ -1,4 +1,3 @@
 export const QUERIES = {
-  FOO: 'foo',
-  DAILY_RATES: 'dailyRates',
+  DAILY_RATES: 'DAILY_RATES',
 }

@@ -1,22 +1,24 @@
 import { FC } from 'react'
 import { useQuery } from 'react-query'
 
-import { QUERIES, api } from '../../constants'
-
-const FAKE_DATA = [
-  { id: '1', name: 'Foo' },
-  { id: '2', name: 'Bar' },
-]
+import { api } from '../../api'
+import { QUERIES } from '../../constants'
+import { logger } from '../../lib'
+import { UNEXPECTED_ERROR } from '../../constants/errors'
 
 export const HomePage: FC<any> = () => {
   const {
     data = [],
     error,
     isLoading,
-  } = useQuery(QUERIES.DAILY_RATES, api.getDailyRates)
+  } = useQuery(QUERIES.DAILY_RATES, {
+    queryFn: api.getDailyRates,
+    onError: logger.error,
+    retry: false,
+  })
 
-  if (error && typeof error === 'string') {
-    return <div>{error}</div>
+  if (error) {
+    return <div>{UNEXPECTED_ERROR}</div>
   }
 
   if (isLoading) {

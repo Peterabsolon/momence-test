@@ -6,3 +6,5 @@
 - Jest tests
 - Cypress tests
 - Version with mobx-blocks
+- Root ~ alias
+- Husky hooks

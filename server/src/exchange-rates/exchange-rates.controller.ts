@@ -7,7 +7,7 @@ export class ExchangeRatesController {
   constructor(private readonly exchangeRatesService: ExchangeRatesService) {}
 
   @Get()
-  findAll() {
-    return this.exchangeRatesService.findAll();
+  getParsed() {
+    return this.exchangeRatesService.getParsed();
   }
 }

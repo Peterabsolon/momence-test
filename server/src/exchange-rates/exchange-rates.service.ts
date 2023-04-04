@@ -1,8 +1,10 @@
 import { Observable, map } from 'rxjs';
-import { AxiosResponse } from 'axios';
 
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
+
+import { ExchangeRate } from './exchange-rates.types';
+import { parseExchangeRates } from './parseExchangeRates';
 
 // TODO: Move somewhero elso
 const API_URL =
@@ -12,7 +14,11 @@ const API_URL =
 export class ExchangeRatesService {
   constructor(private readonly httpService: HttpService) {}
 
-  findAll(): Observable<AxiosResponse<any[]>> {
+  getRaw(): Observable<string> {
     return this.httpService.get(API_URL).pipe(map((res) => res.data));
+  }
+
+  getParsed(): Observable<ExchangeRate[]> {
+    return this.getRaw().pipe(map(parseExchangeRates));
   }
 }

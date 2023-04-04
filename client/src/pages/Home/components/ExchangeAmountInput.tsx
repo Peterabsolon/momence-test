@@ -30,9 +30,5 @@ export const ExchangeAmountInput = ({ value, onChangeEnd, ...props }: ExchangeAm
   // ====================================================
   // JSX
   // ====================================================
-  return (
-    <div>
-      <Input value={value} {...props} placeholder="Enter amount in CZK" />
-    </div>
-  )
+  return <Input value={value} {...props} placeholder="Enter amount in CZK" data-cy="exchange-amount-input" />
 }

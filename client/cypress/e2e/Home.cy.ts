@@ -4,11 +4,14 @@ import { ROUTES, UNEXPECTED_ERROR } from '../../src/constants'
 import { config } from '../../src/config'
 
 import rates from '../data/rates'
-import { assertTableData } from '../helpers'
+import { assertTableData, assertTableRow } from '../helpers'
 
 const RATES_ENDPOINT = `${config.API_URL}/exchange-rates`
 
-const RATES_TABLE_SELECTOR = '[data-cy="exchange-rates-table"]'
+const UI = {
+  RATES_TABLE: '[data-cy="exchange-rates-table"]',
+  AMOUNT_INPUT: '[data-cy="exchange-amount-input"]',
+}
 
 describe('Home', () => {
   it('renders spinner initially', () => {
@@ -28,6 +31,30 @@ describe('Home', () => {
   it('renders exchange rates on success', () => {
     cy.intercept(RATES_ENDPOINT, { body: rates }).as('getRates')
     cy.visit(ROUTES.HOME)
-    assertTableData(RATES_TABLE_SELECTOR, rates)
+    assertTableData(UI.RATES_TABLE, rates)
+  })
+
+  // TODO: remove wait
+  it('computes correct exchange amount for rates with amount 1', () => {
+    cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
+    cy.visit(ROUTES.HOME)
+    cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
+    assertTableRow(UI.RATES_TABLE, 0, { ...rates[0], CZK: '6.902' })
+  })
+
+  // TODO: remove wait
+  it('computes correct exchange amount for rates with amount 100', () => {
+    cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
+    cy.visit(ROUTES.HOME)
+    cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
+    assertTableRow(UI.RATES_TABLE, 8, { ...rates[8], CZK: '1609.010' })
+  })
+
+  // TODO: remove wait
+  it('computes correct exchange amount for rates with amount 1000', () => {
+    cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
+    cy.visit(ROUTES.HOME)
+    cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
+    assertTableRow(UI.RATES_TABLE, 12, { ...rates[12], CZK: '69348.128' })
   })
 })

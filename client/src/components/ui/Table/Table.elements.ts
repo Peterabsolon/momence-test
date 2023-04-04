@@ -12,7 +12,7 @@ export const TableCell = styled.td<Pick<TableColumnProps<any>, 'align'>>`
   `}
 `
 
-export const TableHeader = styled.td<Pick<TableColumnProps<any>, 'align'>>`
+export const TableHeader = styled.th<Pick<TableColumnProps<any>, 'align'>>`
   font-weight: 600;
 
   ${({ align }) => css`

@@ -1,4 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { HttpModule } from '@nestjs/axios';
+
 import { ExchangeRatesService } from './exchange-rates.service';
 
 describe('ExchangeRatesService', () => {
@@ -6,6 +8,7 @@ describe('ExchangeRatesService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [HttpModule],
       providers: [ExchangeRatesService],
     }).compile();
 

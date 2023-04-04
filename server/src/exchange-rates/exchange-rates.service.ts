@@ -6,8 +6,7 @@ import { Injectable } from '@nestjs/common';
 import { ExchangeRate } from './exchange-rates.types';
 import { parseExchangeRates } from './parseExchangeRates';
 
-// TODO: Move somewhero elso
-const API_URL =
+const RATES_URL =
   'https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt';
 
 @Injectable()
@@ -15,7 +14,7 @@ export class ExchangeRatesService {
   constructor(private readonly httpService: HttpService) {}
 
   getRaw(): Observable<string> {
-    return this.httpService.get(API_URL).pipe(map((res) => res.data));
+    return this.httpService.get(RATES_URL).pipe(map((res) => res.data));
   }
 
   getParsed(): Observable<ExchangeRate[]> {

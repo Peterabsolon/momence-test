@@ -5,6 +5,10 @@ const PORT = process.env.PORT || 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // TODO: as .env variable
+  app.enableCors({ origin: 'http://localhost:3000' });
+
   await app.listen(PORT);
 }
 

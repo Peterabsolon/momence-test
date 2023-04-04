@@ -32,11 +32,5 @@ const parseExchangeRate = (row: string): ExchangeRate | null => {
   const code = parts[3];
   const rate = Number(parts[4]);
 
-  return {
-    country,
-    currency,
-    amount,
-    code,
-    rate,
-  } as ExchangeRate;
+  return { country, currency, amount, code, rate };
 };

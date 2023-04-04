@@ -1,5 +1,6 @@
 import { TableRow } from './TableRow'
 import { TableColumnProps } from './Table.types'
+import { TableHeader, TableWrapper } from './Table.elements'
 
 export interface TableProps<Row> {
   /**
@@ -20,11 +21,13 @@ export interface TableProps<Row> {
 
 export const Table = <Row extends AnyRecord>({ rows, columns, getKey = (row) => row.id, ...rest }: TableProps<Row>) => {
   return (
-    <table {...rest}>
+    <TableWrapper {...rest}>
       <thead>
         <tr>
-          {columns.map((col) => (
-            <th key={col.label}>{col.label}</th>
+          {columns.map(({ align = 'left', ...col }) => (
+            <TableHeader key={col.label} align={align}>
+              {col.label}
+            </TableHeader>
           ))}
         </tr>
       </thead>
@@ -34,6 +37,6 @@ export const Table = <Row extends AnyRecord>({ rows, columns, getKey = (row) => 
           <TableRow key={getKey(row)} row={row} columns={columns} />
         ))}
       </tbody>
-    </table>
+    </TableWrapper>
   )
 }

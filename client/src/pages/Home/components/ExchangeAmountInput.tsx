@@ -32,7 +32,7 @@ export const ExchangeAmountInput = ({ value, onChangeEnd, ...props }: ExchangeAm
   // ====================================================
   return (
     <div>
-      <Input value={value} {...props} />
+      <Input value={value} {...props} placeholder="Enter amount in CZK" />
     </div>
   )
 }

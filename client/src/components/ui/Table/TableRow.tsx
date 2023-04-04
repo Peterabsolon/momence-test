@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 import { TableColumnProps } from './Table.types'
+import { TableCell } from './Table.elements'
 
 export interface TableRowProps<Row extends AnyRecord> {
   row: Row
@@ -10,7 +11,7 @@ export interface TableRowProps<Row extends AnyRecord> {
 export const TableRow = <Row extends AnyRecord>({ row, columns }: TableRowProps<Row>) => {
   return (
     <tr>
-      {columns.map((col) => {
+      {columns.map(({ align = 'left', ...col }) => {
         let value: ReactNode
 
         if (col.render) {
@@ -21,7 +22,11 @@ export const TableRow = <Row extends AnyRecord>({ row, columns }: TableRowProps<
           value = row[col.dataKey]
         }
 
-        return <td key={col.label}>{value}</td>
+        return (
+          <TableCell key={col.label} align={align}>
+            {value}
+          </TableCell>
+        )
       })}
     </tr>
   )

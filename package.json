@@ -12,9 +12,5 @@
     "test": "npm run test:server && npm run test:client"
   },
   "author": "",
-  "license": "ISC",
-  "workspaces": [
-    "client",
-    "server"
-  ]
+  "license": "ISC"
 }

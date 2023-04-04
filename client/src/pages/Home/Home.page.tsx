@@ -1,13 +1,20 @@
-import { FC } from 'react'
+import { FC, useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from '../../api'
-import { QUERIES } from '../../constants'
+import { QUERIES, UNEXPECTED_ERROR } from '../../constants'
 import { logger } from '../../lib'
-import { UNEXPECTED_ERROR } from '../../constants/errors'
-import { ExchangeRatesTable } from './components'
+
+import { ExchangeAmountInput, ExchangeRatesTable } from './components'
+import { computeExchangeRate } from './Home.utils'
 
 export const HomePage: FC<any> = () => {
+  // ====================================================
+  // State
+  // ====================================================
+  const [input, setInput] = useState('')
+  const [amount, setAmount] = useState(0)
+
   const {
     data = [],
     error,
@@ -18,6 +25,14 @@ export const HomePage: FC<any> = () => {
     retry: false,
   })
 
+  // ====================================================
+  // Computed
+  // ====================================================
+  const rates = useMemo(() => data.map((rate) => computeExchangeRate(rate, amount)), [amount])
+
+  // ====================================================
+  // JSX
+  // ====================================================
   if (error) {
     return <div>{UNEXPECTED_ERROR}</div>
   }
@@ -27,8 +42,10 @@ export const HomePage: FC<any> = () => {
   }
 
   return (
-    <div>
-      <ExchangeRatesTable rates={data} />
-    </div>
+    <>
+      <ExchangeAmountInput value={input} onChange={setInput} onChangeEnd={setAmount} />
+
+      <ExchangeRatesTable rates={amount ? rates : data} />
+    </>
   )
 }

@@ -21,7 +21,7 @@ export const TableRow = <Row extends AnyRecord>({ row, columns }: TableRowProps<
           value = row[col.dataKey]
         }
 
-        return <td>{value}</td>
+        return <td key={col.label}>{value}</td>
       })}
     </tr>
   )

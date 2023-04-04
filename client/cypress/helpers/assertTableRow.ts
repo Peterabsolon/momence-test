@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 export const assertTableRow = (selector: string, index: number, data: Record<string, any>) => {
-  return cy.get(selector).then(($table) => {
+  cy.get(selector).then(($table) => {
     const row = $table.find(`tr:nth-child(${index + 1})`)
 
     Object.entries(data).map(([key, prop], colIndex) => {

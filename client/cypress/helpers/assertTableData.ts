@@ -3,5 +3,5 @@
 import { assertTableRow } from './assertTableRow'
 
 export const assertTableData = (selector: string, data: Record<string, any>[]) => {
-  return Object.values(data).map((row, index) => assertTableRow(selector, index, row))
+  Object.values(data).map((row, index) => assertTableRow(selector, index, row))
 }

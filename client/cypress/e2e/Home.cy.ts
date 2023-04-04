@@ -31,7 +31,7 @@ describe('Home', () => {
   it('renders exchange rates on success', () => {
     cy.intercept(RATES_ENDPOINT, { body: rates }).as('getRates')
     cy.visit(ROUTES.HOME)
-    assertTableData(UI.RATES_TABLE, rates)
+    cy.assertTableData(UI.RATES_TABLE, rates)
   })
 
   // TODO: remove wait
@@ -39,7 +39,7 @@ describe('Home', () => {
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
     cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
-    assertTableRow(UI.RATES_TABLE, 0, { ...rates[0], CZK: '6.902' })
+    cy.assertTableRow(UI.RATES_TABLE, 0, { ...rates[0], CZK: '6.902' })
   })
 
   // TODO: remove wait
@@ -47,7 +47,7 @@ describe('Home', () => {
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
     cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
-    assertTableRow(UI.RATES_TABLE, 8, { ...rates[8], CZK: '1609.010' })
+    cy.assertTableRow(UI.RATES_TABLE, 8, { ...rates[8], CZK: '1609.010' })
   })
 
   // TODO: remove wait
@@ -55,6 +55,6 @@ describe('Home', () => {
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
     cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
-    assertTableRow(UI.RATES_TABLE, 12, { ...rates[12], CZK: '69348.128' })
+    cy.assertTableRow(UI.RATES_TABLE, 12, { ...rates[12], CZK: '69348.128' })
   })
 })

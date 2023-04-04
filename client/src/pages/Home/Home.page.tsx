@@ -5,6 +5,7 @@ import { api } from '../../api'
 import { QUERIES } from '../../constants'
 import { logger } from '../../lib'
 import { UNEXPECTED_ERROR } from '../../constants/errors'
+import { ExchangeRatesTable } from './components'
 
 export const HomePage: FC<any> = () => {
   const {
@@ -27,9 +28,7 @@ export const HomePage: FC<any> = () => {
 
   return (
     <div>
-      {data.map((item) => (
-        <div key={item.country}>{item.country}</div>
-      ))}
+      <ExchangeRatesTable rates={data} />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { components, OptionProps } from 'react-select'
+import { components, OptionProps, SingleValueProps } from 'react-select'
 
 import { CountryWithFlag, Select, SelectOption, SelectProps } from '~/components'
 
@@ -31,7 +31,7 @@ export const CurrencyCodeSelect = ({ rates, onChange, ...rest }: CurrencyCodeSel
       isClearable
       placeholder="Currency"
       data-cy="currency-code-select"
-      components={{ Option: CurrencyOption }}
+      components={{ Option: CurrencyOption, SingleValue: CurrencyValue }}
     />
   )
 }
@@ -44,6 +44,20 @@ const CurrencyOption = (props: OptionProps<SelectOption<ExchangeRateRow>>) => {
       <components.Option {...props}>
         <CountryWithFlag country={country} currency={currency} />
       </components.Option>
+    )
+  }
+
+  return null
+}
+
+const CurrencyValue = (props: SingleValueProps<SelectOption<ExchangeRateRow>>) => {
+  if (props.data.data) {
+    const { country, currency } = props.data.data
+
+    return (
+      <components.SingleValue {...props}>
+        <CountryWithFlag country={country} currency={currency} />
+      </components.SingleValue>
     )
   }
 

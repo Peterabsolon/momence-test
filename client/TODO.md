@@ -1,5 +1,8 @@
 # TODO
 
+- Sorting
+- Epilogue font
+- Styling
 - React hooks ESLint
 - React error boundary
 - ESLint

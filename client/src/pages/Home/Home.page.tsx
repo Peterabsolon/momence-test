@@ -1,7 +1,7 @@
 import { FC, useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 
-import { api } from '../../api'
+import { useApi } from '../../api'
 import { QUERIES, UNEXPECTED_ERROR } from '../../constants'
 import { logger } from '../../lib'
 
@@ -15,6 +15,7 @@ export const HomePage: FC<any> = () => {
   const [input, setInput] = useState('')
   const [amount, setAmount] = useState(0)
 
+  const api = useApi()
   const {
     data = [],
     error,

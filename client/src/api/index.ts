@@ -1,2 +1,2 @@
-export * as api from './endpoints'
+export * from './context'
 export * from './schemas'

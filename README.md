@@ -1,7 +1,5 @@
 # momence-test
 
-TODO: Screenshot
-
 ## Key features
 
 ### Client

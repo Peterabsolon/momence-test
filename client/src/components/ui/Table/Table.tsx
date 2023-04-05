@@ -29,7 +29,7 @@ const TableComp = <Row extends AnyRecord>({ rows, getKey = (row) => row.id, ...r
       <thead>
         <tr>
           {columns.map(({ align = 'left', ...col }) => (
-            <TableHeader key={col.label} align={align}>
+            <TableHeader key={col.label} align={align} width={col.width}>
               {col.label}
             </TableHeader>
           ))}

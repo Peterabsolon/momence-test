@@ -1,6 +1,10 @@
 import { lookup } from 'country-data'
 
 export const getFlagImageUrl = (country: string) => {
+  if (country === 'IMF') {
+    return 'https://static-s.aa-cdn.net/img/ios/414587764/c49da9a1d641c9e8b2a4d2ae42d05296?v=1'
+  }
+
   let code = ''
 
   const res = lookup.countries({ name: country })

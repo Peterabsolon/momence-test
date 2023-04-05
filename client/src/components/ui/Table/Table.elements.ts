@@ -5,6 +5,7 @@ import { TableColumnProps } from './Table.types'
 export const TableWrapper = styled.table`
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 `
 
 export const TableCell = styled.td<Pick<TableColumnProps<unknown>, 'align'>>`
@@ -24,11 +25,12 @@ export const TableCell = styled.td<Pick<TableColumnProps<unknown>, 'align'>>`
   `}
 `
 
-export const TableHeader = styled.th<Pick<TableColumnProps<unknown>, 'align'>>`
+export const TableHeader = styled.th<Pick<TableColumnProps<unknown>, 'align' | 'width'>>`
   font-weight: 600;
 
-  ${({ align }) => css`
+  ${({ align, width }) => css`
     text-align: ${align};
+    width: ${typeof width === 'number' ? `${width}px` : width};
   `}
 `
 

@@ -1,7 +1,8 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react'
 
-import { FATAL_ERROR } from '../constants'
-import { logger } from '../lib'
+import { FATAL_ERROR } from '~/constants'
+import { logger } from '~/lib'
+
 import { ExchangeRate, schemas } from './schemas'
 
 export interface ApiContext {

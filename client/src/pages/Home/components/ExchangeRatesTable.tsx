@@ -1,9 +1,10 @@
 import numeral from 'numeral'
 import { useCallback } from 'react'
 
-import { Table } from '../../../components'
-import { NUMERIC_FORMAT } from '../../../constants'
-import { memo } from '../../../utils'
+import { Table } from '~/components'
+import { NUMERIC_FORMAT } from '~/constants'
+import { memo } from '~/utils'
+
 import { ExchangeRateWithConverted } from '../Home.types'
 
 export interface ExchangeRatesTableProps {

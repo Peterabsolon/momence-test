@@ -1,8 +1,9 @@
 import { FC, useCallback, useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 
-import { useApi } from '../../api'
-import { QUERIES, UNEXPECTED_ERROR } from '../../constants'
+import { useApi } from '~/api'
+import { QUERIES, UNEXPECTED_ERROR } from '~/constants'
+
 import { ExchangeAmountInput, ExchangeRatesTable } from './components'
 import { computeExchangeRate } from './Home.utils'
 

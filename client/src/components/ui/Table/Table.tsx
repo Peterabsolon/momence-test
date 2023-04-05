@@ -1,4 +1,5 @@
-import { memo } from '../../../utils'
+import { memo } from '~/utils'
+
 import { TableHeader, TableWrapper } from './Table.elements'
 import { TableColumnProps } from './Table.types'
 import { TableRow } from './TableRow'

@@ -23,7 +23,8 @@ export const ApiProvider = (props: PropsWithChildren) => {
   // ====================================================
   const getDailyRates = async (): Promise<ExchangeRate[]> => {
     const res = await fetch(`${apiUrl}/exchange-rates`).then((r) => r.json())
-    return schemas.exchangeRates.parse(res)
+    schemas.exchangeRates.parse(res)
+    return res
   }
 
   // ====================================================

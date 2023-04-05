@@ -1,7 +1,5 @@
 # TODO
 
-- React error boundary
-- Jest
 - Remove wait from Cypress tests
 
 - Sorting

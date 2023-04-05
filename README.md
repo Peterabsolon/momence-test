@@ -25,6 +25,7 @@ TODO: Screenshot
 
 - Uses Husky pre-commit and pre-push hooks to ensure pushed code is valid
 - NPM workspaces not used at the end, had issues with deployment that were not worth spending time on
+- I ended up skipping unit testing on the client due to [ridiculous Jest setup](https://hung.dev/posts/jest-vite) with Vite & SWC
 
 ### Exchange rates feature
 
@@ -32,7 +33,6 @@ TODO: Screenshot
 - The input field has [debounce built into it](/client/src/pages/Home/components/ExchangeAmountInput.tsx#L17), hence the business logic is [rather simple](/client/src/pages/Home/Home.page.tsx#L31)
 - The Table uses `React.memo()` to optimize rendering (e.g. don't rerender when input value changes)
 - Core logic thouroughly tested with Cypress [here](/client/cypress/e2e/Home.cy.ts)
-- TODO: Conversion logic unit tested with Jest
 
 ## Getting started
 

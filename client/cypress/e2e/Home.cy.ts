@@ -24,36 +24,46 @@ describe('Home', () => {
   it('renders unexpected error when data malformed', () => {
     cy.intercept(RATES_ENDPOINT, { body: [{ foo: 'foo' }] }).as('getRates')
     cy.visit(ROUTES.HOME)
+    cy.wait('@getRates').wait(100)
     cy.get('body').should('contain', UNEXPECTED_ERROR)
   })
 
   it('renders exchange rates on success', () => {
     cy.intercept(RATES_ENDPOINT, { body: rates }).as('getRates')
     cy.visit(ROUTES.HOME)
+    cy.wait('@getRates')
     assertTableData(UI.RATES_TABLE, rates)
   })
 
-  // TODO: remove wait
   it('computes correct exchange amount for rates with amount 1', () => {
+    cy.clock()
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
-    cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
+    cy.tick(500)
+    cy.get(UI.AMOUNT_INPUT).type('100')
+    cy.tick(500).wait(1)
     assertTableRow(UI.RATES_TABLE, 0, { ...rates[0], CZK: '6.902' })
   })
 
   // TODO: remove wait
   it('computes correct exchange amount for rates with amount 100', () => {
+    cy.clock()
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
-    cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
+    cy.tick(500)
+    cy.get(UI.AMOUNT_INPUT).type('100')
+    cy.tick(500).wait(1)
     assertTableRow(UI.RATES_TABLE, 8, { ...rates[8], CZK: '1609.010' })
   })
 
   // TODO: remove wait
   it('computes correct exchange amount for rates with amount 1000', () => {
+    cy.clock()
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
-    cy.get(UI.AMOUNT_INPUT).type('100').wait(500)
+    cy.tick(500)
+    cy.get(UI.AMOUNT_INPUT).type('100')
+    cy.tick(500).wait(1)
     assertTableRow(UI.RATES_TABLE, 12, { ...rates[12], CZK: '69348.128' })
   })
 })

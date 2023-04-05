@@ -48,11 +48,17 @@ const StyledInput = styled.input`
     border: 1px solid ${theme.colors.border};
     border-radius: ${theme.radii.sm};
     height: 38px;
-    padding: 0 12px;
+    padding: 5px 12px 6px;
     transition: 0.15s ease;
+    outline: none;
 
     &:hover {
       border-color: ${theme.colors.borderDark};
+    }
+
+    &:focus {
+      border-color: ${theme.colors.focus};
+      box-shadow: 0 0 0 1px ${theme.colors.focus};
     }
   `}
 `

@@ -26,6 +26,10 @@ export const palette = {
   yellow: {
     400: '#ffff42',
   },
+
+  blue: {
+    400: '#2684FF', // same as react-select uses
+  },
 }
 
 export const theme = {
@@ -37,7 +41,7 @@ export const theme = {
     error: palette.red['400'],
     success: palette.green['400'],
     warning: palette.yellow['400'],
-    focus: palette.brand.primary,
+    focus: palette.blue['400'],
     border: palette.bw[100],
     borderDark: palette.bw[200],
   },

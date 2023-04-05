@@ -42,10 +42,9 @@ describe('Home', () => {
     cy.tick(500)
     cy.get(UI.AMOUNT_INPUT).type('100')
     cy.tick(500).wait(1)
-    assertTableRow(UI.RATES_TABLE, 0, { ...rates[0], CZK: '6.902' })
+    assertTableRow(UI.RATES_TABLE, 0, { ...rates[0], CZK: '6.960 AUD' })
   })
 
-  // TODO: remove wait
   it('computes correct exchange amount for rates with amount 100', () => {
     cy.clock()
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
@@ -53,10 +52,9 @@ describe('Home', () => {
     cy.tick(500)
     cy.get(UI.AMOUNT_INPUT).type('100')
     cy.tick(500).wait(1)
-    assertTableRow(UI.RATES_TABLE, 8, { ...rates[8], CZK: '1609.010' })
+    assertTableRow(UI.RATES_TABLE, 8, { ...rates[8], CZK: '1.605k HUF' })
   })
 
-  // TODO: remove wait
   it('computes correct exchange amount for rates with amount 1000', () => {
     cy.clock()
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
@@ -64,6 +62,6 @@ describe('Home', () => {
     cy.tick(500)
     cy.get(UI.AMOUNT_INPUT).type('100')
     cy.tick(500).wait(1)
-    assertTableRow(UI.RATES_TABLE, 12, { ...rates[12], CZK: '69348.128' })
+    assertTableRow(UI.RATES_TABLE, 12, { ...rates[12], CZK: '69.784k IDR' })
   })
 })

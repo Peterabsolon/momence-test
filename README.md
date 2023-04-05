@@ -1,21 +1,30 @@
 # momence-test
 
+TODO: Screenshot
+
 ## Key features
 
 ### Client
 
+- [Deployed here](https://momence-test-vlxp5wixua-uc.a.run.app/)
+- Dockerized, deployed to [GCP Cloud Run](https://cloud.google.com/run) (on free tier so the server sleeps in downtime, hence slower start)
 - Bootstrapped with [Vite](https://vitejs.dev/)
-- Dockerized, deployed to [GCP Cloud Run](https://cloud.google.com/run)
 - Reads environment variables at runtime ([here](/client/src/api/context.tsx) and [here](/client/www/index.js))
 - Uses [Zod](https://www.npmjs.com/package/zod) to parse API data [here](/client/src/api/context.tsx#L26)
-- Uses [Cypress](https://www.cypress.io/) for end-to-end testing [Home.cy.ts](<[here](/client/cypress/e2e/Home.cy.ts)>)
+- Uses [Cypress](https://www.cypress.io/) for end-to-end testing [Home.cy.ts](/client/cypress/e2e/Home.cy.ts)
 - Uses ["feature folders"](https://profy.dev/article/react-folder-structure)
 - Uses error boundary to catch errors
 
 ### Server
 
-- Boostrapped with NestJS (a bit overkill for this but its generators save a lot of time)
-- Feature folders
+- Boostrapped with [NestJS](https://nestjs.com/) (a bit overkill for this but its generators save a lot of time)
+- Enables CORS [only for the client origin](/server/src/main.ts#L9)
+- Returns parsed currency data, the [parse function](/server/src/exchange-rates/parseExchangeRates.ts) has [100% test coverage](/server/src/exchange-rates/parseExchangeRates.spec.ts)
+
+### Shared
+
+- Uses Husky pre-commit and pre-push hooks to ensure pushed code is valid
+- NPM workspaces not used at the end, had issues with deployment that were not worth spending time on
 
 ### Exchange rates feature
 
@@ -23,6 +32,7 @@
 - The input field has [debounce built into it](/client/src/pages/Home/components/ExchangeAmountInput.tsx#L17), hence the business logic is [rather simple](/client/src/pages/Home/Home.page.tsx#L31)
 - The Table uses `React.memo()` to optimize rendering (e.g. don't rerender when input value changes)
 - Core logic thouroughly tested with Cypress [here](/client/cypress/e2e/Home.cy.ts)
+- TODO: Conversion logic unit tested with Jest
 
 ## Getting started
 
@@ -32,20 +42,15 @@ Install dependencies:
 npm i
 ```
 
-Start dev servers:
+Start dev servers, simulatenously or separately
 
 ```bash
 npm run dev
-```
-
-Optionally run dev servers separately:
-
-```bash
 npm run dev:server
 npm run dev:client
 ```
 
-Run all tests
+Run all tests, simulatenously or separately
 
 ```bash
 npm run test

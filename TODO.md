@@ -1,9 +1,9 @@
 # TODO
 
-- Husky hooks
 - React error boundary
-- Remove wait from Cypress tests
 - Jest
+- Remove wait from Cypress tests
+
 - Sorting
 - Epilogue font
 - Styling

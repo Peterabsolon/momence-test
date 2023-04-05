@@ -20,6 +20,7 @@ export const HomePage: FC = () => {
     error,
     isLoading,
   } = useQuery(QUERIES.DAILY_RATES, {
+    useErrorBoundary: true,
     queryFn: api.getDailyRates,
     onError: logger.error,
     retry: false,

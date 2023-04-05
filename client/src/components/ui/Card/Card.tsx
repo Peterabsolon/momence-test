@@ -17,7 +17,7 @@ export const Card = ({ children, p = 3, ...rest }: CardProps) => {
 const Wrapper = styled.div<SpaceProps>`
   ${({ theme }) => css`
     background: ${theme.palette.bw['800']};
-    border-radius: ${theme.radii.sm};
+    border-radius: ${theme.radii.md};
   `}
 
   ${space}

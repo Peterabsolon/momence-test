@@ -28,7 +28,7 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
         {
           label: 'Converted',
           align: 'right',
-          render: (row) => `${numeral(row.converted).format(NUMERIC_FORMAT)} ${row.code}`,
+          render: (row) => (row.converted ? `${numeral(row.converted).format(NUMERIC_FORMAT)} ${row.code}` : '—'),
         },
       ]}
     />

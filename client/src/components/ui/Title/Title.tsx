@@ -46,13 +46,15 @@ const sharedStyles = ({ align = 'left', color }: Omit<TitleProps, 'children' | '
 
 const H1 = styled.h1`
   ${sharedStyles}
-  font-size: 46px;
+  font-size: 2.5rem;
 `
 
 const H2 = styled.h2`
   ${sharedStyles}
+  font-size: 2rem;
 `
 
 const H3 = styled.h3`
   ${sharedStyles}
+  font-size: 1.5rem;
 `

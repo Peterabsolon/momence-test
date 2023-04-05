@@ -21,24 +21,28 @@ export interface TableProps<Row> {
   getKey?: (row: Row) => string
 }
 
-const TableComp = <Row extends AnyRecord>({ rows, columns, getKey = (row) => row.id, ...rest }: TableProps<Row>) => (
-  <TableWrapper {...rest}>
-    <thead>
-      <tr>
-        {columns.map(({ align = 'left', ...col }) => (
-          <TableHeader key={col.label} align={align}>
-            {col.label}
-          </TableHeader>
-        ))}
-      </tr>
-    </thead>
+const TableComp = <Row extends AnyRecord>({ rows, getKey = (row) => row.id, ...rest }: TableProps<Row>) => {
+  const columns = rest.columns.filter((col) => !col.hidden)
 
-    <tbody>
-      {rows.map((row) => (
-        <TableRow key={getKey(row)} row={row} columns={columns} />
-      ))}
-    </tbody>
-  </TableWrapper>
-)
+  return (
+    <TableWrapper {...rest}>
+      <thead>
+        <tr>
+          {columns.map(({ align = 'left', ...col }) => (
+            <TableHeader key={col.label} align={align}>
+              {col.label}
+            </TableHeader>
+          ))}
+        </tr>
+      </thead>
+
+      <tbody>
+        {rows.map((row) => (
+          <TableRow key={getKey(row)} row={row} columns={columns} />
+        ))}
+      </tbody>
+    </TableWrapper>
+  )
+}
 
 export const Table = memo(TableComp)

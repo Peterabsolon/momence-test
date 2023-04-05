@@ -1,5 +1,6 @@
 import { debounce } from 'lodash'
 import { ChangeEvent, InputHTMLAttributes, useEffect, useMemo } from 'react'
+import styled, { css } from 'styled-components'
 
 const DEBOUNCE_MS = 500
 
@@ -38,5 +39,20 @@ export const Input = ({ onChange, onChangeEnd, value, ...props }: InputProps) =>
   // ====================================================
   // JSX
   // ====================================================
-  return <input {...props} value={value} onChange={handleChange} />
+  return <StyledInput {...props} value={value} onChange={handleChange} />
 }
+
+const StyledInput = styled.input`
+  ${({ theme }) => css`
+    width: 100%;
+    border: 1px solid ${theme.colors.border};
+    border-radius: ${theme.radii.sm};
+    height: 38px;
+    padding: 0 8px;
+    transition: 0.15s ease;
+
+    &:hover {
+      border-color: ${theme.colors.borderDark};
+    }
+  `}
+`

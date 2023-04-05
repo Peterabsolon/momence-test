@@ -17,6 +17,7 @@ TODO: Screenshot
 
 ### Server
 
+- [Deployed here](https://momence-test-server-vlxp5wixua-uc.a.run.app)
 - Boostrapped with [NestJS](https://nestjs.com/) (a bit overkill for this but its generators save a lot of time)
 - Enables CORS [only for the client origin](/server/src/main.ts#L9)
 - Returns parsed currency data, the [parse function](/server/src/exchange-rates/parseExchangeRates.ts) has [100% test coverage](/server/src/exchange-rates/parseExchangeRates.spec.ts)

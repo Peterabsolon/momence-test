@@ -10,6 +10,8 @@ export const palette = {
 
   bw: {
     0: 'black',
+    100: '#ccc',
+    200: '#b3b3b3',
     800: 'white',
   },
 
@@ -36,11 +38,13 @@ export const theme = {
     success: palette.green['400'],
     warning: palette.yellow['400'],
     focus: palette.brand.primary,
+    border: palette.bw[100],
+    borderDark: palette.bw[200],
   },
 
   radii: {
-    sm: '6px',
-    md: '9px',
+    sm: '4px',
+    md: '6px',
     lg: '12px',
   },
 }

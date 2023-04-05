@@ -1,8 +1,9 @@
 import numeral from 'numeral'
-import { memo } from 'react'
+import { useCallback } from 'react'
 
 import { Table } from '../../../components'
 import { NUMERIC_FORMAT } from '../../../constants'
+import { memo } from '../../../utils'
 import { ExchangeRateWithConverted } from '../Home.types'
 
 export interface ExchangeRatesTableProps {
@@ -10,11 +11,13 @@ export interface ExchangeRatesTableProps {
 }
 
 export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
+  const getKey = useCallback((rate: ExchangeRateWithConverted) => rate.country, [])
+
   return (
     <Table<ExchangeRateWithConverted>
       data-cy="exchange-rates-table"
       rows={rates}
-      getKey={(rate) => rate.country}
+      getKey={getKey}
       columns={[
         { label: 'Country', dataKey: 'country' },
         { label: 'Currency', dataKey: 'currency' },
@@ -26,5 +29,3 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
     />
   )
 })
-
-ExchangeRatesTable.displayName = 'ExchangeRatesTable'

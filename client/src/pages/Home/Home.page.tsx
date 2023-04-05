@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react'
+import { FC, useCallback, useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 
 import { useApi } from '../../api'
@@ -30,6 +30,13 @@ export const HomePage: FC = () => {
   const rates = useMemo(() => data.map((rate) => computeExchangeRate(rate, amount)), [amount, data])
 
   // ====================================================
+  // Handlers
+  // ====================================================
+  const handleInputChangeEnd = useCallback((value?: string) => {
+    setAmount(Number(value) || 0)
+  }, [])
+
+  // ====================================================
   // JSX
   // ====================================================
   if (error) {
@@ -42,8 +49,7 @@ export const HomePage: FC = () => {
 
   return (
     <>
-      <ExchangeAmountInput value={input} onChange={setInput} onChangeEnd={setAmount} />
-
+      <ExchangeAmountInput value={input} onChange={setInput} onChangeEnd={handleInputChangeEnd} />
       <ExchangeRatesTable rates={amount ? rates : data} />
     </>
   )

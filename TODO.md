@@ -1,7 +1,5 @@
 # TODO
 
-- Remove wait from Cypress tests
-
 - Sorting
 - Epilogue font
 - Styling

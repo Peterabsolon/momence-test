@@ -14,7 +14,7 @@ const App = () => (
   <ThemeProvider theme={theme}>
     <ErrorBoundary
       onError={(e) => logger.error(e?.message)}
-      fallbackRender={() => <Alert level="error" message={UNEXPECTED_ERROR} />}
+      fallbackRender={() => <Alert level="error" mt={5} message={UNEXPECTED_ERROR} />}
     >
       <ApiProvider>
         <QueryClientProvider client={queryClient}>

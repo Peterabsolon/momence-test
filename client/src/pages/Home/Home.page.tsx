@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import { MultiValue, SingleValue } from 'react-select'
 
 import { useApi } from '~/api'
-import { Alert, Box, Card, Flex, SelectOption, Spinner, Title } from '~/components'
+import { Alert, Box, Card, Flex, HorizontalScroll, SelectOption, Spinner, Title } from '~/components'
 import { QUERIES, theme, UNEXPECTED_ERROR } from '~/constants'
 
 import { CurrencyCodeSelect, ExchangeAmountInput, ExchangeRatesTable } from './components'
@@ -85,9 +85,13 @@ export const HomePage: FC = () => {
         </Flex>
       </Card>
 
-      <Card>
-        <ExchangeRatesTable rates={rates} />
-      </Card>
+      <HorizontalScroll>
+        <Box minWidth={1024}>
+          <Card>
+            <ExchangeRatesTable rates={rates} />
+          </Card>
+        </Box>
+      </HorizontalScroll>
     </>
   )
 }

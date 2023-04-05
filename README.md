@@ -12,6 +12,7 @@
 - Uses [Cypress](https://www.cypress.io/) for end-to-end testing [Home.cy.ts](/client/cypress/e2e/Home.cy.ts)
 - Uses ["feature folders"](https://profy.dev/article/react-folder-structure)
 - Uses error boundary to catch errors
+- Optimized for mobile - the table is horizontally scrollable
 
 ### Server
 

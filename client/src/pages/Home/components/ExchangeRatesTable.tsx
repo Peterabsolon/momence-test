@@ -20,6 +20,7 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
       data-cy="exchange-rates-table"
       rows={rates}
       getKey={getKey}
+      minWidth={960}
       columns={[
         {
           label: 'Country',

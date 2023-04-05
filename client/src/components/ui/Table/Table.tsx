@@ -19,6 +19,11 @@ export interface TableProps<Row> {
    * Function to extract the key from a row
    */
   getKey?: (row: Row) => string
+
+  /**
+   * Use fixed min-width
+   */
+  minWidth?: number
 }
 
 const TableComp = <Row extends AnyRecord>({ rows, getKey = (row) => row.id, ...rest }: TableProps<Row>) => {

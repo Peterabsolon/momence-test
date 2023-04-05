@@ -1,11 +1,16 @@
 import styled, { css } from 'styled-components'
 
+import type { TableProps } from './Table'
 import { TableColumnProps } from './Table.types'
 
-export const TableWrapper = styled.table`
+export const TableWrapper = styled.table<Pick<TableProps<unknown>, 'minWidth'>>`
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+
+  ${({ minWidth }) => css`
+    min-width: ${minWidth}px;
+  `}
 `
 
 export const TableCell = styled.td<Pick<TableColumnProps<unknown>, 'align'>>`

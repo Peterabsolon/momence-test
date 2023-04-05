@@ -11,3 +11,7 @@ export const ExchangeRateSchema = z.object({
 export const ExchangeRatesSchema = z.array(ExchangeRateSchema)
 
 export type ExchangeRate = z.infer<typeof ExchangeRateSchema>
+
+export const schemas = {
+  exchangeRates: ExchangeRatesSchema,
+}

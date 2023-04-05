@@ -2,7 +2,7 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 
 import { FATAL_ERROR } from '../constants'
 import { logger } from '../lib'
-import { ExchangeRate, ExchangeRatesSchema } from './schemas'
+import { ExchangeRate, schemas } from './schemas'
 
 export interface ApiContext {
   getDailyRates: () => Promise<ExchangeRate[]>
@@ -13,12 +13,28 @@ export interface ApiContext {
 export const ApiContext = createContext<ApiContext>(undefined as any)
 
 export const ApiProvider = (props: PropsWithChildren) => {
+  // ====================================================
+  // State
+  // ====================================================
   const [apiUrl, setApiUrl] = useState()
 
+  // ====================================================
+  // Handlers
+  // ====================================================
+  const getDailyRates = async (): Promise<ExchangeRate[]> => {
+    const res = await fetch(`${apiUrl}/exchange-rates`).then((r) => r.json())
+    return schemas.exchangeRates.parse(res)
+  }
+
+  // ====================================================
+  // Effects
+  // ====================================================
+  // Fetch API_URL from the server, use .env in development
   useEffect(() => {
     const fetchApiUrl = async () => {
       if (import.meta.env.DEV) {
         setApiUrl(import.meta.env.VITE_API_URL)
+        return
       }
 
       try {
@@ -35,14 +51,10 @@ export const ApiProvider = (props: PropsWithChildren) => {
     fetchApiUrl()
   }, [])
 
-  const getDailyRates = async (): Promise<ExchangeRate[]> => {
-    const response = await fetch(`${apiUrl}/exchange-rates`).then((r) => r.json())
-
-    ExchangeRatesSchema.parse(response)
-
-    return response
-  }
-
+  // ====================================================
+  // JSX
+  // ====================================================
+  // Wait until we resolve API_URL
   if (!apiUrl) {
     return null
   }

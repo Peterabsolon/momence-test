@@ -14,9 +14,9 @@ export const TableWrapper = styled.table<Pick<TableProps<unknown>, 'minWidth'>>`
 `
 
 export const TableCell = styled.td<Pick<TableColumnProps<unknown>, 'align'>>`
-  ${({ align }) => css`
-    border-bottom: 1px solid #eee;
-    padding: 6px 0;
+  ${({ align, theme }) => css`
+    border-bottom: 1px solid ${theme.colors.borderLight};
+    padding: 6px 12px;
     text-align: ${align};
     vertical-align: middle;
 
@@ -32,11 +32,21 @@ export const TableCell = styled.td<Pick<TableColumnProps<unknown>, 'align'>>`
 
 export const TableHeader = styled.th<Pick<TableColumnProps<unknown>, 'align' | 'width'>>`
   font-weight: 600;
+  padding: 0px 12px 6px;
 
-  ${({ align, width }) => css`
+  ${({ align, width, theme }) => css`
     text-align: ${align};
     width: ${typeof width === 'number' ? `${width}px` : width};
+    border-bottom: 1px solid ${theme.colors.borderLight};
   `}
+
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
+  }
 `
 
 export const TableRowEl = styled.tr`

@@ -26,20 +26,11 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
             minWidth={960}
             columns={[
               {
-                label: 'Country',
-                width: 240,
-                render: (row) => <CountryWithFlag country={row.country} />,
-              },
-              {
                 label: 'Currency',
-                width: 160,
-                dataKey: 'currency',
+                width: 240,
+                render: (row) => <CountryWithFlag country={row.country} currency={row.currency} />,
               },
-              {
-                label: 'Amount',
-                width: 160,
-                dataKey: 'amount',
-              },
+
               {
                 label: 'Code',
                 width: 160,
@@ -49,6 +40,11 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
                 label: 'Rate',
                 align: 'right',
                 render: (row) => numeral(row.rate).format(NUMERIC_FORMAT),
+              },
+              {
+                label: 'Amount',
+                width: 160,
+                dataKey: 'amount',
               },
               {
                 label: 'Converted',

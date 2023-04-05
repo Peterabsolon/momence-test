@@ -2,6 +2,7 @@ import { FC, useCallback, useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 
 import { useApi } from '~/api'
+import { Alert } from '~/components'
 import { QUERIES, UNEXPECTED_ERROR } from '~/constants'
 
 import { ExchangeAmountInput, ExchangeRatesTable } from './components'
@@ -41,7 +42,7 @@ export const HomePage: FC = () => {
   // JSX
   // ====================================================
   if (error) {
-    return <div>{UNEXPECTED_ERROR}</div>
+    return <Alert level="error" message={UNEXPECTED_ERROR} />
   }
 
   if (isLoading) {

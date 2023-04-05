@@ -1,1 +1,1 @@
-export const NUMERIC_FORMAT = '0.000'
+export const NUMERIC_FORMAT = '0.000a'

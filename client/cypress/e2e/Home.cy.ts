@@ -21,7 +21,7 @@ describe('Home', () => {
     cy.get('body').should('contain', 'Australia')
   })
 
-  it('renders unexpected error on failure', () => {
+  it('renders unexpected error when data malformed', () => {
     cy.intercept(RATES_ENDPOINT, { body: [{ foo: 'foo' }] }).as('getRates')
     cy.visit(ROUTES.HOME)
     cy.get('body').should('contain', UNEXPECTED_ERROR)

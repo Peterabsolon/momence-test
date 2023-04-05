@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Custom Node server to expose (non-secret) environment varibles to client at runtime.
  *

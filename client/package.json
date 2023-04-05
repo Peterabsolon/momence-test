@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "node www/index.js",
+    "start:cy": "PORT=3000 VITE_API_URL=http://localhost:8080 node www/index.js",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -12,7 +13,7 @@
     "test": "NODE_ENV=test jest",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:run:ci": "npm run build && start-server-and-test start http://localhost:8080 cy:run",
+    "cy:run:ci": "npm run build && start-server-and-test start:cy http://localhost:3000 cy:run",
     "format:check": "prettier src --check",
     "format": "prettier src --write",
     "ts:check": "tsc -p .",

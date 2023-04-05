@@ -5,6 +5,10 @@ import { logger } from '~/lib'
 
 import { ExchangeRate, schemas } from './schemas'
 
+const API_URL_FROM_ENV = import.meta.env.VITE_API_URL
+const IS_DEV = import.meta.env.DEV
+const IS_PROD = import.meta.env.PROD
+
 export interface ApiContext {
   getDailyRates: () => Promise<ExchangeRate[]>
 }
@@ -34,8 +38,8 @@ export const ApiProvider = (props: PropsWithChildren) => {
   // Fetch API_URL from the server, use .env in development
   useEffect(() => {
     const fetchApiUrl = async () => {
-      if (import.meta.env.DEV) {
-        setApiUrl(import.meta.env.VITE_API_URL)
+      if (IS_DEV) {
+        setApiUrl(API_URL_FROM_ENV)
         return
       }
 
@@ -44,7 +48,9 @@ export const ApiProvider = (props: PropsWithChildren) => {
         const data = await res.json()
         setApiUrl(data.VITE_API_URL)
       } catch (err) {
-        if (process.env.NODE_ENV === 'production') {
+        console.log({ err })
+
+        if (IS_PROD) {
           logger.error(FATAL_ERROR, 'Failed to fetch /env.js in production')
         }
       }
@@ -56,6 +62,8 @@ export const ApiProvider = (props: PropsWithChildren) => {
   // ====================================================
   // JSX
   // ====================================================
+  console.log('apiUrl', apiUrl)
+
   // Wait until we resolve API_URL
   if (!apiUrl) {
     return null

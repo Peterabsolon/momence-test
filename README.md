@@ -22,7 +22,7 @@
 
 ### Shared
 
-- Uses Husky pre-commit and pre-push hooks to ensure pushed code is valid
+- Uses Husky pre-commit and pre-push hooks to ensure pushed code is valid (ghetto CI)
 - NPM workspaces not used at the end, had issues with deployment that were not worth spending time on
 - I ended up skipping unit testing on the client due to [ridiculous Jest setup](https://hung.dev/posts/jest-vite) with Vite & SWC
 

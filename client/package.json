@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint ./src",
     "lint:fix": "npm run lint -- --fix",
-    "test": "NODE_ENV=test jest",
+    "test": "echo TODO...",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:run:ci": "npm run build && start-server-and-test start:cy http://localhost:3000 cy:run",

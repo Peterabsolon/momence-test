@@ -3,6 +3,11 @@
 
 // More shades could be added here, 100 - 800, for this demo this is enough
 export const palette = {
+  brand: {
+    primary: '#6643f0',
+    secondary: '#21c2b8',
+  },
+
   bw: {
     0: 'black',
     800: 'white',
@@ -23,10 +28,20 @@ export const palette = {
 
 export const theme = {
   palette,
+
   colors: {
+    primary: palette.brand.primary,
+    secondary: palette.brand.secondary,
     error: palette.red['400'],
     success: palette.green['400'],
     warning: palette.yellow['400'],
+    focus: palette.brand.primary,
+  },
+
+  radii: {
+    sm: '6px',
+    md: '9px',
+    lg: '12px',
   },
 }
 

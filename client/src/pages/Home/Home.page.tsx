@@ -2,8 +2,8 @@ import { FC, useCallback, useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 
 import { useApi } from '~/api'
-import { Alert } from '~/components'
-import { QUERIES, UNEXPECTED_ERROR } from '~/constants'
+import { Alert, Card, Title } from '~/components'
+import { QUERIES, theme, UNEXPECTED_ERROR } from '~/constants'
 
 import { ExchangeAmountInput, ExchangeRatesTable } from './components'
 import { computeExchangeRate } from './Home.utils'
@@ -51,8 +51,15 @@ export const HomePage: FC = () => {
 
   return (
     <>
-      <ExchangeAmountInput value={input} onChange={setInput} onChangeEnd={handleInputChangeEnd} />
-      <ExchangeRatesTable rates={amount ? rates : data} />
+      <Title color={theme.palette.bw['800']}>Currency converter</Title>
+
+      <Card mb={2}>
+        <ExchangeAmountInput value={input} onChange={setInput} onChangeEnd={handleInputChangeEnd} />
+      </Card>
+
+      <Card>
+        <ExchangeRatesTable rates={amount ? rates : data} />
+      </Card>
     </>
   )
 }

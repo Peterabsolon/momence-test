@@ -1,3 +1,5 @@
 export * from './fields/Input'
 export * from './ui/Alert'
+export * from './ui/Card'
 export * from './ui/Table'
+export * from './ui/Title'

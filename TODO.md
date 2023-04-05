@@ -1,7 +1,6 @@
 # TODO
 
 - Sorting
-- Epilogue font
 - Styling
+- Country flags
 - Spinners
-- Version with mobx-blocks

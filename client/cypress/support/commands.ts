@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /// <reference types="cypress" />
 
 import { assertTableData, assertTableRow } from '../helpers'

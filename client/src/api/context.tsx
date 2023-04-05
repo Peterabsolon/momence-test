@@ -17,10 +17,14 @@ export const ApiProvider = (props: PropsWithChildren) => {
 
   useEffect(() => {
     const fetchApiUrl = async () => {
+      if (import.meta.env.DEV) {
+        setApiUrl(import.meta.env.VITE_API_URL)
+      }
+
       try {
         const res = await fetch('/env.js')
         const data = await res.json()
-        setApiUrl(data.VITE_API_URL || import.meta.env.VITE_API_URL)
+        setApiUrl(data.VITE_API_URL)
       } catch (err) {
         if (process.env.NODE_ENV === 'production') {
           logger.error(FATAL_ERROR, 'Failed to fetch /env.js in production')

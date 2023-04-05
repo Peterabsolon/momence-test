@@ -3,6 +3,7 @@
 - React hooks ESLint
 - React error boundary
 - Husky hooks
+- Jest
 - ESLint
 - Prettier
 - Sorting

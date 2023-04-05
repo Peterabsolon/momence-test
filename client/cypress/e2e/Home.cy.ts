@@ -1,12 +1,10 @@
 /// <reference types="cypress" />
 
 import { ROUTES, UNEXPECTED_ERROR } from '../../src/constants'
-import { config } from '../../src/config'
-
 import rates from '../data/rates'
-import { assertTableData, assertTableRow } from '../helpers'
 
-const RATES_ENDPOINT = `${config.API_URL}/exchange-rates`
+const API_URL = Cypress.env('API_URL')
+const RATES_ENDPOINT = `${API_URL}/exchange-rates`
 
 const UI = {
   RATES_TABLE: '[data-cy="exchange-rates-table"]',

@@ -6,7 +6,7 @@ import { getFlagImageUrl } from './CountryWithFlag.utils'
 
 export interface CountryWithFlagProps {
   country: string
-  currency: string
+  currency?: string
 }
 
 export const CountryWithFlag = ({ country, currency }: CountryWithFlagProps) => (

@@ -28,7 +28,7 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
               {
                 label: 'Country',
                 width: 240,
-                render: (row) => <CountryWithFlag country={row.country} currency={row.currency} />,
+                render: (row) => <CountryWithFlag country={row.country} />,
               },
               {
                 label: 'Currency',

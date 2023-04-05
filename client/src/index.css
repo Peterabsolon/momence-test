@@ -32,7 +32,7 @@
 
 :root,
 input {
-  // 16px on mobile so there is no zoom when using inputs
+  /* 16px on mobile so there is no zoom when using inputs */
   font-size: 16px;
 }
 

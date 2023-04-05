@@ -1,7 +1,7 @@
 # TODO
 
-- React hooks ESLint
 - React error boundary
+- Remove wait from Cypress tests
 - Husky hooks
 - Jest
 - ESLint

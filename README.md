@@ -8,7 +8,7 @@
 - Dockerized, deployed to [GCP Cloud Run](https://cloud.google.com/run) (on free tier so the server sleeps in downtime, hence slower start)
 - Bootstrapped with [Vite](https://vitejs.dev/)
 - Reads environment variables at runtime ([here](/client/src/api/context.tsx) and [here](/client/www/index.js))
-- Uses [Zod](https://www.npmjs.com/package/zod) to parse API data [here](/client/src/api/context.tsx#L26)
+- Uses [Zod](https://www.npmjs.com/package/zod) to parse API data [here](/client/src/api/context.tsx#L31)
 - Uses [Cypress](https://www.cypress.io/) for end-to-end testing [Home.cy.ts](/client/cypress/e2e/Home.cy.ts)
 - Uses ["feature folders"](https://profy.dev/article/react-folder-structure)
 - Uses error boundary to catch errors
@@ -30,7 +30,7 @@
 ### Exchange rates feature
 
 - I did my own take on this, hopefully that's fine. The exchange amounts are computed for all rates simulatenously, the user can subsequently choose a currency from the dropdown to filter the results.
-- The input field has [debounce built into it](/client/src/pages/Home/components/ExchangeAmountInput.tsx#L17), hence the business logic is [rather simple](/client/src/pages/Home/Home.page.tsx#L31)
+- The input field has [debounce built into it](/client/src/components/fields/Input/Input.tsx#L34), hence the business logic is [rather simple](/client/src/pages/Home/Home.page.tsx#L34)
 - The Table uses `React.memo()` to optimize rendering (e.g. don't rerender when input value changes)
 - Core logic thouroughly tested with Cypress [here](/client/cypress/e2e/Home.cy.ts)
 

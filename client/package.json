@@ -14,14 +14,15 @@
     "cy:run:ci": "npm run build && start-server-and-test start http://localhost:3000 cy:run"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "lodash": "^4.17.21",
     "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
+    "serve": "^14.2.0",
     "start-server-and-test": "^2.0.0",
     "styled-components": "^5.3.9",
-    "serve": "^14.2.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {

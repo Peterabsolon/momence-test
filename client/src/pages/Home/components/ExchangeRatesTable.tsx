@@ -17,24 +17,18 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
 
   return (
     <HorizontalScroll>
-      <Box minWidth={1024}>
+      <Box minWidth={768}>
         <Card>
           <Table<ExchangeRateRow>
             data-cy="exchange-rates-table"
             rows={rates}
             getKey={getKey}
-            minWidth={960}
+            minWidth={768 - 16}
             columns={[
               {
                 label: 'Currency',
-                width: 240,
+                width: 250,
                 render: (row) => <CountryWithFlag country={row.country} currency={row.currency} />,
-              },
-
-              {
-                label: 'Code',
-                width: 160,
-                dataKey: 'code',
               },
               {
                 label: 'Rate',
@@ -51,12 +45,15 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
                 align: 'right',
                 render: (row) =>
                   row.converted ? (
-                    <ConvertedAmount>
-                      {numeral(row.converted).format(NUMERIC_FORMAT)} {row.code}
-                    </ConvertedAmount>
+                    <ConvertedAmount>{numeral(row.converted).format(NUMERIC_FORMAT)}</ConvertedAmount>
                   ) : (
                     '—'
                   ),
+              },
+              {
+                label: 'Code',
+                width: 60,
+                dataKey: 'code',
               },
             ]}
           />
@@ -67,6 +64,6 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
 })
 
 const ConvertedAmount = styled.span`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.focus};
   font-weight: 600;
 `

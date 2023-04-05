@@ -2,7 +2,7 @@ import numeral from 'numeral'
 import { useCallback } from 'react'
 import styled from 'styled-components'
 
-import { CountryWithFlag, Table } from '~/components'
+import { Box, Card, CountryWithFlag, HorizontalScroll, Table } from '~/components'
 import { NUMERIC_FORMAT } from '~/constants'
 import { memo } from '~/utils'
 
@@ -16,51 +16,57 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
   const getKey = useCallback((rate: ExchangeRateRow) => rate.country, [])
 
   return (
-    <Table<ExchangeRateRow>
-      data-cy="exchange-rates-table"
-      rows={rates}
-      getKey={getKey}
-      minWidth={960}
-      columns={[
-        {
-          label: 'Country',
-          width: 240,
-          render: (row) => <CountryWithFlag country={row.country} currency={row.currency} />,
-        },
-        {
-          label: 'Currency',
-          width: 160,
-          dataKey: 'currency',
-        },
-        {
-          label: 'Amount',
-          width: 160,
-          dataKey: 'amount',
-        },
-        {
-          label: 'Code',
-          width: 160,
-          dataKey: 'code',
-        },
-        {
-          label: 'Rate',
-          align: 'right',
-          render: (row) => numeral(row.rate).format(NUMERIC_FORMAT),
-        },
-        {
-          label: 'Converted',
-          align: 'right',
-          render: (row) =>
-            row.converted ? (
-              <ConvertedAmount>
-                {numeral(row.converted).format(NUMERIC_FORMAT)} {row.code}
-              </ConvertedAmount>
-            ) : (
-              '—'
-            ),
-        },
-      ]}
-    />
+    <HorizontalScroll>
+      <Box minWidth={1024}>
+        <Card>
+          <Table<ExchangeRateRow>
+            data-cy="exchange-rates-table"
+            rows={rates}
+            getKey={getKey}
+            minWidth={960}
+            columns={[
+              {
+                label: 'Country',
+                width: 240,
+                render: (row) => <CountryWithFlag country={row.country} currency={row.currency} />,
+              },
+              {
+                label: 'Currency',
+                width: 160,
+                dataKey: 'currency',
+              },
+              {
+                label: 'Amount',
+                width: 160,
+                dataKey: 'amount',
+              },
+              {
+                label: 'Code',
+                width: 160,
+                dataKey: 'code',
+              },
+              {
+                label: 'Rate',
+                align: 'right',
+                render: (row) => numeral(row.rate).format(NUMERIC_FORMAT),
+              },
+              {
+                label: 'Converted',
+                align: 'right',
+                render: (row) =>
+                  row.converted ? (
+                    <ConvertedAmount>
+                      {numeral(row.converted).format(NUMERIC_FORMAT)} {row.code}
+                    </ConvertedAmount>
+                  ) : (
+                    '—'
+                  ),
+              },
+            ]}
+          />
+        </Card>
+      </Box>
+    </HorizontalScroll>
   )
 })
 

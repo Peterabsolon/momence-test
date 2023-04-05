@@ -33,6 +33,7 @@ export const Select = <
         {...props}
         components={{
           Placeholder: (_props) => <StyledPlaceholder {..._props} />,
+          ...props.components,
         }}
         styles={{
           container: (baseStyles, state) => ({

@@ -1,5 +1,6 @@
 import { ExchangeRate } from '~/api'
 
-export interface ExchangeRateWithConverted extends ExchangeRate {
+export interface ExchangeRateRow extends ExchangeRate {
   converted?: number
+  flagIconSrc: string
 }

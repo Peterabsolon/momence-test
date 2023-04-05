@@ -48,7 +48,7 @@ const StyledInput = styled.input`
     border: 1px solid ${theme.colors.border};
     border-radius: ${theme.radii.sm};
     height: 38px;
-    padding: 0 8px;
+    padding: 0 12px;
     transition: 0.15s ease;
 
     &:hover {

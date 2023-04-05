@@ -7,7 +7,7 @@ import { Alert, Box, Card, Flex, SelectOption, Title } from '~/components'
 import { QUERIES, theme, UNEXPECTED_ERROR } from '~/constants'
 
 import { CurrencyCodeSelect, ExchangeAmountInput, ExchangeRatesTable } from './components'
-import { computeExchangeRate, isMatchingCode } from './Home.utils'
+import { computeExchangeRate, getFlagImageUrl, isMatchingCode } from './Home.utils'
 
 export const HomePage: FC = () => {
   // ====================================================
@@ -32,7 +32,11 @@ export const HomePage: FC = () => {
   // Computed
   // ====================================================
   const rates = useMemo(
-    () => data.map((rate) => computeExchangeRate(rate, amount)).filter((rate) => isMatchingCode(rate, code)),
+    () =>
+      data
+        .filter((rate) => isMatchingCode(rate, code))
+        .map((rate) => computeExchangeRate(rate, amount))
+        .map(getFlagImageUrl),
     [amount, code, data]
   )
 
@@ -73,7 +77,7 @@ export const HomePage: FC = () => {
           </Box>
 
           <Box flex="1 0 0" minWidth={0}>
-            <CurrencyCodeSelect value={code} onChange={handleCurrencyCodeChange} rates={data} />
+            <CurrencyCodeSelect value={code} onChange={handleCurrencyCodeChange} rates={rates} />
           </Box>
         </Flex>
       </Card>

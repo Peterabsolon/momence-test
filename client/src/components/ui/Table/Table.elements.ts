@@ -10,8 +10,9 @@ export const TableWrapper = styled.table`
 export const TableCell = styled.td<Pick<TableColumnProps<unknown>, 'align'>>`
   ${({ align }) => css`
     border-bottom: 1px solid #eee;
-    padding: 4px 0;
+    padding: 6px 0;
     text-align: ${align};
+    vertical-align: middle;
 
     &:first-of-type {
       padding-left: 0;

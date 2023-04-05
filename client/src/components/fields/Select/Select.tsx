@@ -1,9 +1,10 @@
+import { ReactNode } from 'react'
 import RCSelect, { GroupBase, Props as RCSelectProps } from 'react-select'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
 
 export interface SelectOption {
-  label: string
+  label: string | ReactNode
   value: string
 }
 

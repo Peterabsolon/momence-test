@@ -2,7 +2,7 @@ import numeral from 'numeral'
 import { useCallback } from 'react'
 import styled from 'styled-components'
 
-import { Flex, Table } from '~/components'
+import { CountryWithFlag, Table } from '~/components'
 import { NUMERIC_FORMAT } from '~/constants'
 import { memo } from '~/utils'
 
@@ -23,11 +23,7 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
       columns={[
         {
           label: 'Country',
-          render: (row) => (
-            <Flex alignItems="center">
-              <FlagImg src={row.flagIconSrc} alt={row.country} /> <span className="bold">{row.country}</span>
-            </Flex>
-          ),
+          render: (row) => <CountryWithFlag country={row.country} currency={row.currency} />,
         },
         {
           label: 'Currency',
@@ -62,13 +58,6 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
     />
   )
 })
-
-const FlagImg = styled.img`
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
-  margin-top: -4px;
-`
 
 const ConvertedAmount = styled.span`
   color: ${({ theme }) => theme.colors.primary};

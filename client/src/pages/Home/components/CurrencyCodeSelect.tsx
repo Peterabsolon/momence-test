@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { Select, SelectProps } from '~/components'
+import { CountryWithFlag, Select, SelectProps } from '~/components'
 
 import { ExchangeRateRow } from '../Home.types'
 
@@ -13,11 +13,7 @@ export const CurrencyCodeSelect = ({ rates, ...rest }: CurrencyCodeSelectProps) 
   const options = useMemo(
     () =>
       rates.map((r) => ({
-        label: (
-          <>
-            {r.country} {r.currency}
-          </>
-        ),
+        label: <CountryWithFlag country={r.country} currency={r.currency} />,
         value: r.code,
       })),
     [rates]

@@ -17,7 +17,8 @@ ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 RUN npm ci --production
 COPY --from=BUILD_IMAGE /app/dist ./dist
+COPY --from=BUILD_IMAGE /app/www ./www
 
 EXPOSE 8080
 
-CMD [ "npm", "run", "start" ]
+CMD [ "node", "www/index.js" ]

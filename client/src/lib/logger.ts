@@ -10,7 +10,7 @@ export const logger = {
 
   log: (err?: unknown, message?: string): void => {
     logToExternalService(err, message)
-    console.log('Info:', err, message)
+    console.log('Log:', err, message)
   },
 
   warn: (err?: unknown, message?: string): void => {

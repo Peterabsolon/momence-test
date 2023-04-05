@@ -3,10 +3,12 @@ import { useCallback } from 'react'
 import styled from 'styled-components'
 
 import { Box, Card, CountryWithFlag, HorizontalScroll, Table } from '~/components'
-import { NUMERIC_FORMAT } from '~/constants'
+import { NUMERIC_FORMAT, theme } from '~/constants'
 import { memo } from '~/utils'
 
 import { ExchangeRateRow } from '../Home.types'
+
+const SIDE_PADDING = 16
 
 export interface ExchangeRatesTableProps {
   rates: ExchangeRateRow[]
@@ -17,13 +19,13 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
 
   return (
     <HorizontalScroll>
-      <Box minWidth={768}>
-        <Card>
+      <Box minWidth={theme.containerWidth}>
+        <Card px={SIDE_PADDING}>
           <Table<ExchangeRateRow>
             data-cy="exchange-rates-table"
             rows={rates}
             getKey={getKey}
-            minWidth={768 - 16}
+            minWidth={768 - 2 * SIDE_PADDING}
             columns={[
               {
                 label: 'Currency',
@@ -64,6 +66,6 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
 })
 
 const ConvertedAmount = styled.span`
-  color: ${({ theme }) => theme.colors.focus};
+  color: ${theme.colors.focus};
   font-weight: 600;
 `

@@ -37,6 +37,12 @@ export const palette = {
 export const theme = {
   palette,
 
+  containerWidth: '768px',
+
+  sidePadding: '8px',
+
+  fontFamily: 'Epilogue, system-ui, Avenir, Helvetica, Arial, sans-serif',
+
   colors: {
     primary: palette.brand.primary,
     secondary: palette.brand.secondary,

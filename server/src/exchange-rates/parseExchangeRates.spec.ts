@@ -20,20 +20,12 @@ describe('parseExchangeRates', () => {
   });
 
   it('returns empty array when data row malformed', () => {
-    const rows = [
-      '03 Apr 2023 #66',
-      'Country|Currency|Amount|Code|Rate',
-      'foobarbaz',
-    ];
+    const rows = ['03 Apr 2023 #66', 'Country|Currency|Amount|Code|Rate', 'foobarbaz'];
     expect(parseExchangeRates(rows.join('\n'))).toEqual([]);
   });
 
   it('returns parsed data when string valid', () => {
-    const rows = [
-      '03 Apr 2023 #66',
-      'Country|Currency|Amount|Code|Rate',
-      'Australia|dollar|1|AUD|14.578',
-    ];
+    const rows = ['03 Apr 2023 #66', 'Country|Currency|Amount|Code|Rate', 'Australia|dollar|1|AUD|14.578'];
 
     expect(parseExchangeRates(rows.join('\n'))).toEqual([
       {

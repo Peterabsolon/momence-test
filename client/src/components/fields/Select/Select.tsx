@@ -3,7 +3,8 @@ import RCSelect, { GroupBase, Props as RCSelectProps } from 'react-select'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
 
-export interface SelectOption {
+export interface SelectOption<Data extends AnyRecord = AnyRecord> {
+  data?: Data
   label: string | ReactNode
   value: string
 }

@@ -60,5 +60,11 @@ const StyledInput = styled.input`
       border-color: ${theme.colors.focus};
       box-shadow: 0 0 0 1px ${theme.colors.focus};
     }
+
+    ::placeholder,
+    &::-webkit-input-placeholder {
+      color: ${theme.colors.placeholder};
+      opacity: 1;
+    }
   `}
 `

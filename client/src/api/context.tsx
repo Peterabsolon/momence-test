@@ -48,8 +48,6 @@ export const ApiProvider = (props: PropsWithChildren) => {
         const data = await res.json()
         setApiUrl(data.VITE_API_URL)
       } catch (err) {
-        console.log({ err })
-
         if (IS_PROD) {
           logger.error(FATAL_ERROR, 'Failed to fetch /env.js in production')
         }
@@ -62,8 +60,6 @@ export const ApiProvider = (props: PropsWithChildren) => {
   // ====================================================
   // JSX
   // ====================================================
-  console.log('apiUrl', apiUrl)
-
   // Wait until we resolve API_URL
   if (!apiUrl) {
     return null

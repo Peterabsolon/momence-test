@@ -21,5 +21,14 @@ export const CurrencyCodeSelect = ({ rates, ...rest }: CurrencyCodeSelectProps) 
 
   const value = options.find((opt) => opt.value === rest.value)
 
-  return <Select {...rest} value={value} options={options} isClearable placeholder="Currency" />
+  return (
+    <Select
+      {...rest}
+      value={value}
+      options={options}
+      isClearable
+      placeholder="Currency"
+      data-cy="currency-code-select"
+    />
+  )
 }

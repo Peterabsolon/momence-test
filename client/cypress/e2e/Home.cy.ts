@@ -10,13 +10,15 @@ const RATES_ENDPOINT = `${API_URL}/exchange-rates`
 const UI = {
   RATES_TABLE: '[data-cy="exchange-rates-table"]',
   AMOUNT_INPUT: '[data-cy="exchange-amount-input"]',
+  CURRENCY_SELECT: '[data-cy="currency-code-select"]',
+  SPINNER: '[data-cy="spinner"]',
 }
 
 describe('Home', () => {
   it('renders spinner initially', () => {
     cy.intercept(RATES_ENDPOINT, { body: rates, delay: 100 }).as('getRates')
     cy.visit(ROUTES.HOME)
-    cy.get('body').should('contain', 'Loading...')
+    cy.get(UI.SPINNER).should('exist')
     cy.wait('@getRates')
     cy.get('body').should('contain', 'Australia')
   })
@@ -63,5 +65,13 @@ describe('Home', () => {
     cy.get(UI.AMOUNT_INPUT).type('100')
     cy.tick(500).wait(1)
     assertTableRow(UI.RATES_TABLE, 12, { ...rates[12], CZK: '69.784k IDR' })
+  })
+
+  it('renders only selected rate when some is selected in the dropdown', () => {
+    cy.intercept(RATES_ENDPOINT, { body: rates }).as('getRates')
+    cy.visit(ROUTES.HOME)
+    cy.wait('@getRates')
+    cy.get(UI.CURRENCY_SELECT).type('au {enter}')
+    cy.get(UI.RATES_TABLE).find('tbody').children().should('have.length', 1)
   })
 })

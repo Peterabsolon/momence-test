@@ -13,7 +13,9 @@ export interface SelectProps<
   IsMulti extends boolean = boolean,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends Omit<RCSelectProps<Option, IsMulti, Group>, 'theme'>,
-    SpaceProps {}
+    SpaceProps {
+  'data-cy'?: string
+}
 
 export const Select = <
   Option = SelectOption,
@@ -22,16 +24,20 @@ export const Select = <
 >({
   ...props
 }: SelectProps<Option, IsMulti, Group>) => {
+  const dataCy = props['data-cy']
+
   return (
-    <StyledRCSelect
-      {...props}
-      styles={{
-        container: (baseStyles, state) => ({
-          ...baseStyles,
-          borderColor: state.isFocused ? 'grey' : 'red',
-        }),
-      }}
-    />
+    <div data-cy={dataCy}>
+      <StyledRCSelect
+        {...props}
+        styles={{
+          container: (baseStyles, state) => ({
+            ...baseStyles,
+            borderColor: state.isFocused ? 'grey' : 'red',
+          }),
+        }}
+      />
+    </div>
   )
 }
 

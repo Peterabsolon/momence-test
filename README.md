@@ -49,6 +49,12 @@ npm run dev:server
 npm run dev:client
 ```
 
+Open Cypress UI, debug e2e tests (client app needs to be running)
+
+```bash
+npm run cy:open
+```
+
 Run all tests, simulatenously or separately
 
 ```bash

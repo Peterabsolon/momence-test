@@ -19,7 +19,8 @@
     "build": "npm run build:server && npm run build:client",
     "format:server": "cd ./server && npm run format",
     "format:client": "cd ./client && npm run format",
-    "format": "npm run format:server && npm run format:client"
+    "format": "npm run format:server && npm run format:client",
+    "cy:open": "cd ./client && npm run cy:open"
   },
   "author": "",
   "license": "ISC",

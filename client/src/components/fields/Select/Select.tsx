@@ -3,6 +3,8 @@ import RCSelect, { components, GroupBase, Props as RCSelectProps } from 'react-s
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
 
+import { theme } from '~/constants'
+
 export interface SelectOption<Data extends AnyRecord = AnyRecord> {
   data?: Data
   label: string | ReactNode
@@ -32,8 +34,8 @@ export const Select = <
       <StyledRCSelect
         {...props}
         components={{
-          Placeholder: (_props) => <StyledPlaceholder {..._props} />,
           ...props.components,
+          Placeholder: (_props) => <StyledPlaceholder {..._props} />,
         }}
         styles={{
           container: (baseStyles, state) => ({
@@ -54,5 +56,5 @@ const StyledRCSelect = styled(({ theme: _theme, ...props }) => <RCSelect {...pro
 // TODO: Remove any
 // I spent two days on this already, not worth spending more on this.
 const StyledPlaceholder = styled(components.Placeholder)`
-  color: ${({ theme }) => theme.colors.placeholder};
+  color: ${theme.colors.placeholder} !important;
 ` as any // eslint-disable-line

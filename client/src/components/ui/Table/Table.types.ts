@@ -2,11 +2,9 @@ import { ReactNode } from 'react'
 
 export interface TableColumnProps<Row> {
   /**
-   * Render key, used to extract data from row.
-   * Can be a key from row or any string (the typing here enables autocomplete)
-   * https://artsy.github.io/blog/2023/03/01/typescript-magic/
+   * Render key, used to extract data from row
    */
-  dataKey?: keyof Row | (string & {})
+  dataKey?: keyof Row
 
   /**
    * The column label

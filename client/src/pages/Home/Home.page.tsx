@@ -4,11 +4,10 @@ import { useQuery } from 'react-query'
 import { useApi } from '../../api'
 import { QUERIES, UNEXPECTED_ERROR } from '../../constants'
 import { logger } from '../../lib'
-
 import { ExchangeAmountInput, ExchangeRatesTable } from './components'
 import { computeExchangeRate } from './Home.utils'
 
-export const HomePage: FC<any> = () => {
+export const HomePage: FC = () => {
   // ====================================================
   // State
   // ====================================================

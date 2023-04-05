@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
-import { TableColumnProps } from './Table.types'
 import { TableCell } from './Table.elements'
+import { TableColumnProps } from './Table.types'
 
 export interface TableRowProps<Row extends AnyRecord> {
   row: Row

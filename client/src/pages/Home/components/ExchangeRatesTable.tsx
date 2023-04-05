@@ -1,10 +1,9 @@
-import { memo } from 'react'
 import numeral from 'numeral'
+import { memo } from 'react'
 
 import { Table } from '../../../components'
-
-import { ExchangeRateWithConverted } from '../Home.types'
 import { NUMERIC_FORMAT } from '../../../constants'
+import { ExchangeRateWithConverted } from '../Home.types'
 
 export interface ExchangeRatesTableProps {
   rates: ExchangeRateWithConverted[]
@@ -27,3 +26,5 @@ export const ExchangeRatesTable = memo(({ rates }: ExchangeRatesTableProps) => {
     />
   )
 })
+
+ExchangeRatesTable.displayName = 'ExchangeRatesTable'

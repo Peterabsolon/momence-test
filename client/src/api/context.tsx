@@ -1,14 +1,15 @@
-import { PropsWithChildren, createContext, useContext, useEffect, useState } from 'react'
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react'
 
-import { ExchangeRate, ExchangeRatesSchema } from './schemas'
-import { logger } from '../lib'
 import { FATAL_ERROR } from '../constants'
+import { logger } from '../lib'
+import { ExchangeRate, ExchangeRatesSchema } from './schemas'
 
 export interface ApiContext {
   getDailyRates: () => Promise<ExchangeRate[]>
 }
 
 // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/24509#issuecomment-382213106
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ApiContext = createContext<ApiContext>(undefined as any)
 
 export const ApiProvider = (props: PropsWithChildren) => {

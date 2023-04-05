@@ -1,6 +1,6 @@
-import { TableRow } from './TableRow'
-import { TableColumnProps } from './Table.types'
 import { TableHeader, TableWrapper } from './Table.elements'
+import { TableColumnProps } from './Table.types'
+import { TableRow } from './TableRow'
 
 export interface TableProps<Row> {
   /**

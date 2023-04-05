@@ -1,4 +1,4 @@
-const logToExternalService = (err?: unknown, message?: string) => {
+const logToExternalService = (_err?: unknown, _message?: string) => {
   // TODO: Log to some external aggregator like Sentry.io
 }
 

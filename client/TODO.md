@@ -1,12 +1,13 @@
 # TODO
 
+- React hooks ESLint
+- React error boundary
+- Husky hooks
+- ESLint
+- Prettier
 - Sorting
 - Epilogue font
 - Styling
-- React hooks ESLint
-- React error boundary
-- ESLint
-- Prettier
+- Spinners
 - Version with mobx-blocks
 - Root ~ alias
-- Husky hooks

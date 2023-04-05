@@ -6,13 +6,13 @@ export const TableWrapper = styled.table`
   width: 100%;
 `
 
-export const TableCell = styled.td<Pick<TableColumnProps<any>, 'align'>>`
+export const TableCell = styled.td<Pick<TableColumnProps<unknown>, 'align'>>`
   ${({ align }) => css`
     text-align: ${align};
   `}
 `
 
-export const TableHeader = styled.th<Pick<TableColumnProps<any>, 'align'>>`
+export const TableHeader = styled.th<Pick<TableColumnProps<unknown>, 'align'>>`
   font-weight: 600;
 
   ${({ align }) => css`

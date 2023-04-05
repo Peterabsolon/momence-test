@@ -10,6 +10,8 @@ export const HorizontalScroll = ({ children }: HorizontalScrollProps) => {
 }
 
 const Wrapper = styled.div`
-  max-width: 100%;
+  max-width: calc(100% + 16px);
   overflow-x: auto;
+  margin: 0 -8px;
+  padding: 0 8px;
 `

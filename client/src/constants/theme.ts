@@ -12,6 +12,7 @@ export const palette = {
     0: 'black',
     100: '#ccc',
     200: '#b3b3b3',
+    400: '#757575',
     800: 'white',
   },
 
@@ -38,12 +39,13 @@ export const theme = {
   colors: {
     primary: palette.brand.primary,
     secondary: palette.brand.secondary,
-    error: palette.red['400'],
-    success: palette.green['400'],
-    warning: palette.yellow['400'],
-    focus: palette.blue['400'],
+    error: palette.red[400],
+    success: palette.green[400],
+    warning: palette.yellow[400],
+    focus: palette.blue[400],
     border: palette.bw[100],
     borderDark: palette.bw[200],
+    placeholder: palette.bw[400],
   },
 
   radii: {

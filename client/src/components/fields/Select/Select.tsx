@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import RCSelect, { GroupBase, Props as RCSelectProps } from 'react-select'
+import RCSelect, { components, GroupBase, Props as RCSelectProps } from 'react-select'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
 
@@ -31,6 +31,9 @@ export const Select = <
     <div data-cy={dataCy}>
       <StyledRCSelect
         {...props}
+        components={{
+          Placeholder: (_props) => <StyledPlaceholder {..._props} />,
+        }}
         styles={{
           container: (baseStyles, state) => ({
             ...baseStyles,
@@ -46,3 +49,9 @@ export const Select = <
 const StyledRCSelect = styled(({ theme: _theme, ...props }) => <RCSelect {...props} />)<RCSelectProps>`
   ${space}
 ` as typeof RCSelect
+
+// TODO: Remove any
+// I spent two days on this already, not worth spending more on this.
+const StyledPlaceholder = styled(components.Placeholder)`
+  color: ${({ theme }) => theme.colors.placeholder};
+` as any // eslint-disable-line

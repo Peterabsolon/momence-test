@@ -16,7 +16,7 @@ export const ExchangeAmountInput = ({ value, onChangeEnd, ...props }: ExchangeAm
   // ====================================================
   const handleChangeEnd = useMemo(
     () => debounce((amount?: string) => onChangeEnd(Number(amount) || 0), DEBOUNCE_MS),
-    []
+    [onChangeEnd]
   )
 
   // ====================================================
@@ -25,7 +25,7 @@ export const ExchangeAmountInput = ({ value, onChangeEnd, ...props }: ExchangeAm
   // Call debounced onChangeEnd on value change
   useEffect(() => {
     handleChangeEnd(value)
-  }, [value])
+  }, [value, handleChangeEnd])
 
   // ====================================================
   // JSX

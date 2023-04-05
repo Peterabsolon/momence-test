@@ -28,7 +28,7 @@ export const HomePage: FC = () => {
   // ====================================================
   // Computed
   // ====================================================
-  const rates = useMemo(() => data.map((rate) => computeExchangeRate(rate, amount)), [amount])
+  const rates = useMemo(() => data.map((rate) => computeExchangeRate(rate, amount)), [amount, data])
 
   // ====================================================
   // JSX

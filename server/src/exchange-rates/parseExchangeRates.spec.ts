@@ -9,10 +9,6 @@ describe('parseExchangeRates', () => {
     expect(parseExchangeRates('wowsuchmalformeddata')).toBe(null);
   });
 
-  it('returns null when date row malformed', () => {
-    expect(parseExchangeRates('wowsuchmalformeddata')).toBe(null);
-  });
-
   it('returns null when columns row malformed', () => {
     const rows = ['03 Apr 2023 #66', 'FOO|BAR|BAZ|QUX|FRED'];
     expect(parseExchangeRates(rows.join('\n'))).toBe(null);
